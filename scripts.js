@@ -1,116 +1,76 @@
 // Write your JavaScript code here.
 // Remember to pay attention to page loading!
 
- 
-function init() {
-  const paragraph = document.getElementById("flightStatus");
-  const button = document.getElementById("takeoff");
-  const button2 = document.getElementById("landing")
-  const button3 = document.getElementById("missionAbort");
-  const upButton = document.getElementById("up");
-  const downButton = document.getElementById("down");
-  const rightButton = document.getElementById("right");
-  const leftButton = document.getElementById("left");
- }
+window.addEventListener('load', function () {    //everything is wrapped in this
+ // console.log('it is loaded');
 
-//on click, flight status changes, color and height changes  TAKE OFF BUTTON
-function takeOff() {
-  document.getElementById("flightStatus").innerHTML =
-    " Shuttle in flight.";
-  console.log();
-}
+  //TAKE OFF BUTTON
+  //When the "Take off" button is clicked, the following should happen:
+  //A window CONFIRM (true or false) should let the user know "Confirm that the shuttle is ready for takeoff."
+  document.getElementById('takeoff').addEventListener('click', function () {
+    let response = window.confirm('The shuttle is ready for takeoff');
 
-function colorChange() {
-  document.getElementById("shuttleBackground").style.backgroundColor = "blue";
-}
+    ////If the shuttle is ready for liftoff, then The flight status should change to "Shuttle in flight."
+    if (response) {
+      //is true
+      document.getElementById('flightStatus').innerText = 'Shuttle in flight';
+      // The background color of the shuttle flight screen (id = "shuttleBackground") should change from green to blue.
+      document
+        .getElementById('shuttleBackground')
+        .setAttribute('style', 'background-color: blue');
+      // The shuttle height should increase by 10,000 miles.
+      document.getElementById('spaceShuttleHeight').innerText = '10000';
+    }
+  });
 
-function heightIncrease() {
-  document.getElementById("spaceShuttleHeight").innerHTML = 10000;
-}
+  //LANDING BUTTON
+  // A window alert should let the user know "The shuttle is landing. Landing gear engaged."
+  document.getElementById('landing').addEventListener('click', function () {
+    window.alert('The shuttle is landing. Landing gear engaged.');
+    // The flight status should change to "The shuttle has landed."
+    document.getElementById('flightStatus').innerText =
+      'The shuttle has landed';
+    // The background color of the shuttle flight screen should change from blue to green.
+    document
+      .getElementById('shuttleBackground')
+      .setAttribute('style', 'background-color: green');
+    // The shuttle height should go down to 0.
+    document.getElementById('spaceShuttleHeight').innerText = '0';
+  });
 
-let button = document.getElementById("takeoff");
-button.addEventListener("click", takeOff);
+  //ABORT BUTTON
+  // A window confirm should let the user know "Confirm that you want to abort the mission."
+  document
+    .getElementById('missionAbort')
+    .addEventListener('click', function () {
+      let response = window.confirm(
+        'Confirm that you want to abort the mission.'
+      );
 
+      //// The flight status should change to "Mission aborted."
+      if (response) {
+        //is true
+        document.getElementById('flightStatus').innerText = 'Mission aborted.';
+        // The background color of the shuttle flight screen (id = "shuttleBackground") should change from blue to green.
+        document
+          .getElementById('shuttleBackground')
+          .setAttribute('style', 'background-color: green');
+        // The shuttle height should be 0.
+        document.getElementById('spaceShuttleHeight').innerText = '0';
+      }      
+    });
 
-//on click, alert text, flight status changes, background color changes, height changes  LAND BUTTON
-function land() {
-  document.getElementById("flightStatus").innerHTML =
-    " The shuttle has landed.";
-  console.log();
-}
-
-function alert() {
-    alert("The shuttle is landing. Landing gear engaged");
-}
-
-function colorChange2() {
-  document.getElementById("shuttleBackground").style.backgroundColor = "green";
-}
-
-function heightIncrease2() {
-  document.getElementById("spaceShuttleHeight").innerHTML = 0;
-}
-
-let button2 = document.getElementById("landing");
-button2.addEventListener("click", land);
-
-
-//on click, alert text, flight status changes, background color changes, height changes  ABORT MISSION BUTTON
-function abort() {
-  document.getElementById("flightStatus").innerHTML =
-    "Mission aborted.";
-  console.log();
-}
-
-function colorChange3() {
-  document.getElementById("shuttleBackground").style.backgroundColor = "blue";
-}
-
-function heightIncrease3() {
-  document.getElementById("spaceShuttleHeight").innerHTML = 0;
-}
-
-let button3 = document.getElementById("missionAbort");
-button3.addEventListener("click", abort);
+    //When the "Up", "Down", "Right", and "Left" buttons are clicked, the following should happen:
+// The rocket image should move 10 px in the direction of the button that was clicked.
+// If the "Up" or "Down" buttons were clicked, then the shuttle height should increase or decrease by 10,000 miles.
 
 
-//on click, UP
-function moveImage() {
-  document.getElementById("rocket").height = "85";
-}
-
-function heightIncrease4() {
-  document.getElementById("spaceShuttleHeight").innerHTML = 10000;
-}
-
-let upButton = document.getElementById("up");
-upButton.addEventListener("click", moveImage);
-
-//on click, DOWN
-function moveImage2() {
-  document.getElementById("rocket").height = "75";
-}
-
-function heightIncrease5() {
-  document.getElementById("spaceShuttleHeight").innerHTML = 0;
-}
-
-let downButton = document.getElementById("down");
-downButton.addEventListener("click", moveImage2);
-
-//on click, RIGHT
-function moveImage3() {
-  document.getElementById("rocket").width = "85";
-}
 
 
-let rightButton = document.getElementById("right");
-rightButton.addEventListener("click", moveImage3);
 
-//on click, LEFT
-function moveImage4() {
-  document.getElementById("rocket").width = "75";
-}
 
-let leftButton = document.getElementById("left");
-leftButton.addEventListener("click", moveImage4);
+});
+
+
+
+
